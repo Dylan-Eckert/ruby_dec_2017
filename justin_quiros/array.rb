@@ -12,4 +12,4 @@ c = ["Dustin", 3]
 #a.slice!(0) #removes index 0 from array permanently 
 # puts a.shuffle.join(',') #randomly shuffles array and seperates with a ,
 # a.insert(2, "Josh") #inserts josh at index 2
-# puts a.values_at(2,3).join(' and ') #puts values at index 2 and 3 and joins with an and
+puts a.values_at(2,3).join(' and ') #puts values at index 2 and 3 and joins with an and
