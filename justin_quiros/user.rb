@@ -2,10 +2,10 @@ class User
 	@first_name
 
 	@last_name
-	attr_reader :first_name
-	attr_writer :first_name
-	attr_reader :last_name
-	attr_writer :last_name
+	# attr_reader :first_name
+	# attr_writer :first_name
+	# attr_reader :last_name
+	# attr_writer :last_name
 	attr_accessor :first_name, :last_name
 
 	def initialize(f_name, l_name)

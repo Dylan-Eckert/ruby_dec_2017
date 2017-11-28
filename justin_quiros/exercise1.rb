@@ -43,28 +43,48 @@ comment out multiple lines.
 # 	puts "this runs after my puts"
 # }
 
-class CodingDojo
-	@@no_of_branches = 0
-	def initialize(id, name, address)
-		@branch_id = id
-		@branch_name = name
-		@branch_address = address
-		@@no_of_branches += 1
-		puts "Created branch #{@@no_of_branches}"
-	end
-	def hello
-		puts "Hello CodingDojo!"
-	end
-	def display_all
-		puts "Branch ID: #{@branch_id}"
-		puts "Branch name: #{@branch_name}"
-		puts "Branch address: #{@branch_address}"
-	end
+# class CodingDojo
+# 	@@no_of_branches = 0
+# 	def initialize(id, name, address)
+# 		@branch_id = id
+# 		@branch_name = name
+# 		@branch_address = address
+# 		@@no_of_branches += 1
+# 		puts "Created branch #{@@no_of_branches}"
+# 	end
+# 	def hello
+# 		puts "Hello CodingDojo!"
+# 	end
+# 	def display_all
+# 		puts "Branch ID: #{@branch_id}"
+# 		puts "Branch name: #{@branch_name}"
+# 		puts "Branch address: #{@branch_address}"
+# 	end
+# end
+
+# branch = CodingDojo.new(177, "Alaska CodingDojo", "Anchorage AK")
+# branch.display_all
+# branch.hello
+
+# branch2 = CodingDojo.new(22, "Scranton CodingDojo", "Scranton PA")
+# branch2.display_all
+
+
+
+#Returning self allows you to chain methods like OOP in Python
+class Mammal
+  def initialize
+    puts "I am alive"
+    self
+  end
+  def breath  
+    puts "Inhale and exhale"
+    self
+  end
+  
+  def who_am_i
+    puts self
+    self
+  end
 end
-
-branch = CodingDojo.new(177, "Alaska CodingDojo", "Anchorage AK")
-branch.display_all
-branch.hello
-
-branch2 = CodingDojo.new(22, "Scranton CodingDojo", "Scranton PA")
-branch2.display_all
+my_mammal = Mammal.new.who_am_i.breath
