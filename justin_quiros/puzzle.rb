@@ -12,10 +12,9 @@
 
 # 3
 # arr = ("a".."z").to_a
-# p arr.shuffle.last
-# p arr.shuffle.first
-# arr2 = arr.shuffle
-# p "The first letter in the shuffled array is a vowel!" if ["a","e","i","o","u"].include? arr2.first
+# b = arr.shuffle.last, arr.shuffle.first
+# p  b
+# p "The first letter in the shuffled array is a vowel!" if ["a","e","i","o","u"].include? b.first
 
 # 4
 # arr = []
