@@ -8,29 +8,13 @@ class MathDojo
   end
 
   def add(*args)
-  	for i in args
-  		if i.class.to_s == "Array"
-  			for x in i
-  				@number += x
-  			end
-  		else
-  			@number += i
-  		end
-  	end
-  	return self
+  	@number += args.flatten.reduce(0, :+)
+  	self
   end
 
   def subtract(*args)
-  	for i in args
-  		if i.class.to_s == "Array"
-  			for x in i
-  				@number -= x
-  			end
-  		else
-  			@number -= i
-  		end
-  	end
-  	return self
+  	@number -= args.flatten.reduce(0, :+)
+  	self
   end
 
   def result
