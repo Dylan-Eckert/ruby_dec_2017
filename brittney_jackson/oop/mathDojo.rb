@@ -2,6 +2,7 @@
 
 class MathDojo
   # your code here
+   attr_reader :result
 	def initialize
     	@result=0
     	puts 'hello'
