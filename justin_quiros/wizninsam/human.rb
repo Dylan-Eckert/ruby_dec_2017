@@ -1,5 +1,6 @@
+
 class Human
-	attr_accessor :health
+	attr_accessor :strength, :intelligence, :stealth, :health
 	def initialize
 		@strength = 3
 		@stealth = 3
@@ -7,8 +8,8 @@ class Human
 		@health = 100
 	end
 	def attack(object)
-		if object.kind_of? (Human)
-			object.health -= 5
+		if object.class.ancestors.include?(Human)
+			object.health -= 10
 			self
 		else
 			puts "You can not attack a non-human!"
@@ -22,11 +23,12 @@ class Human
 	end
 end
 
+require_relative "ninja"
+require_relative "wizard"
+require_relative "samurai"
 
-corie = Human.new
-mike = Human.new
-joe = 12
-
-p corie.attack(mike)
-puts mike.display_info
+sam = Samurai.new
+nin = Ninja.new
+wiz = Wizard.new
+joe = 0
 
