@@ -2,7 +2,6 @@
 class Mammal
 	def initialize
 		@health = 150
-		puts 'woof'
 		self
 	end
 
