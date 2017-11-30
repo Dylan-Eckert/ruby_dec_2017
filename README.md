@@ -29,6 +29,7 @@ Fundamentals - https://youtu.be/cFdMPCl1Rr0 <br>
 OOP - https://youtu.be/Lr1YSKSVM8Q <br>
 Ruby Olympics / Rails Intro - https://youtu.be/bsimKSJ3Ofo <br>
 Models (Validations/Migrations/Relationships) - https://youtu.be/hL5N8HBsw4w <br>
+Self-join https://youtu.be/ScTp79u6nMU <br>
 
 ## Resources
 
