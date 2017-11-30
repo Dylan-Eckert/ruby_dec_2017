@@ -6,7 +6,7 @@ class Lion < Mammal
 	def initialize
 		super
 		@health = 170
-		self 
+		
 	end
 
 	def fly
