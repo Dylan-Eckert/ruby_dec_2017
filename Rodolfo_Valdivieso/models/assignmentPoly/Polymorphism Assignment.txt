@@ -1,0 +1,27 @@
+
+#Ran this into the console
+rails g model Comment content:text imageable:references{polymorphic}
+#Added this to Models User, Blog, Post and Message.
+has_many :comments, as: :imageable
+
+#Testing the application:
+
+Comment.create(content:"Contenttttt", imageable:User.first)
+Comment.create(content:"Contenttttt", imageable:Blog.first)
+Comment.create(content:"Contenttttt", imageable:Post.first)
+Comment.create(content:"Contenttttt", imageable:Message.first)
+
+User.first.comments
+Blog.first.comments
+Post.first.comments
+Message.first.comments
+
+Comment.all
+
+c = Comment.first
+c.content = "UPDATING"
+c.save
+
+Comment.last.destroy
+
+
