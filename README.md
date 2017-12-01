@@ -31,7 +31,8 @@ Ruby Olympics / Rails Intro - https://youtu.be/bsimKSJ3Ofo <br>
 Models (Validations/Migrations/Relationships) - https://youtu.be/hL5N8HBsw4w <br>
 Self-join - https://youtu.be/ScTp79u6nMU <br>
 Routes/Controllers Lecture - https://youtu.be/phoKZVMg4-4 <br>
-Controllers I - https://youtu.be/k4ttpRgRGV8 <br>
+Controllers - https://youtu.be/k4ttpRgRGV8 <br>
+Forms / Named Routes - https://youtu.be/B3mOcqreZnk <br>
 
 ## Resources
 
