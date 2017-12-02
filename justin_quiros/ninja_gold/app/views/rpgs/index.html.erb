@@ -1,0 +1,53 @@
+<%= stylesheet_link_tag "application.css" %>
+
+
+	<p>Your Gold: <%= @gold %></p>
+	<div class="box">
+	<form action="<%= gold_path %>" method="post">
+		<input name="authenticity_token" value = "<%=form_authenticity_token %>" type = "hidden">
+		<p>Farm</p>
+		<p>(Earns 10-20 golds)</p>
+		<input type="hidden" name="place" value="farm">
+		<button name="farm" method="post">Find Gold!</button>
+	</form>
+	</div>
+	<div class="box">
+	<form action="<%= gold_path %>" method="post">
+		<input name="authenticity_token" value = "<%=form_authenticity_token %>" type = "hidden">
+		<p>Cave</p>
+		<p>(Earns 5-10 golds)</p>
+		<input type="hidden" name="place" value="cave">
+		<button name="cave" method="post">Find Gold!</button>
+	</form>
+	</div>
+	<div class="box">
+	<form action="<%= gold_path %>" method="post">
+		<input name="authenticity_token" value = "<%=form_authenticity_token %>" type = "hidden">
+		<p>House</p>
+		<p>(Earns 2-5 golds)</p>
+		<input type="hidden" name="place" value="house">
+		<button name="house" method="post">Find Gold!</button>
+	</form>
+	</div>
+	<div class="box">
+	<form action="<%= gold_path %>" method="post">
+		<input name="authenticity_token" value = "<%=form_authenticity_token %>" type = "hidden">
+		<p>Casino</p>
+		<p>(Earns/Takes 0-50 golds)</p>
+		<input type="hidden" name="place" value="casino">
+		<button name="casino" method="post">Find Gold!</button>
+	</form>
+	</div>
+	<br>
+	<div>​
+		<p>Activities:</p>​
+		<div class="activity">​
+			<% @activities.reverse.each do |activity| %>​
+				<% if activity.include?("Earned") %>​
+					<p class="win"><%= activity %></p>​
+				<% else %>​
+					<p class="lose"><%= activity %></p>​
+				<% end %>​
+			<% end %>​
+		</div>​
+	</div>​

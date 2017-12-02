@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/new'
-  get 'users/edit'
-  get 'users/total'
+  # get 'rpgs/farm'
+  # get 'rpgs/cave'
+  # get 'rpgs/house'
+  # get 'rpgs/casino'
 
-  get 'users' => "users#index"
-  get 'users/total' => "users#total"
-  post 'users' => "users#create"
-  get 'users/new' => "users#new"
-  get 'users/:id' => "users#show"
-  get 'users/:id/edit' => "users#edit"
+  root 'rpgs#index'
+
+  post 'gold' => 'rpgs#win_lose'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
