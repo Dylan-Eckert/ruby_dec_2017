@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit User</title>
+</head>
+<body>
+	<form action="users/" method="post">
+		<h1>Edit User</h1>
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="name" value="<%= @user.name %>"></td>
+				<td><input type="submit" value="Edit"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
