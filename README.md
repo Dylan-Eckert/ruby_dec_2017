@@ -1,4 +1,4 @@
-# Coding Dojo - Ruby on Rails October 2017
+# Coding Dojo - Ruby on Rails December 2017
 
 Welcome Rubyists 
 
