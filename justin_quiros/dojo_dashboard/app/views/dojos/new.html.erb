@@ -1,0 +1,20 @@
+<h1>New Dojo</h1>
+<% if flash[:errors] %>
+	<% flash[:errors].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+<form action="<%= dojos_create_path %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+	<p><label for="branch">Branch: </label>
+	<input type="text" name="form[branch]" value="<%= @dojo.branch %>"></p>
+	<p><label for="branch">Street: </label>
+	<input type="text" name="form[street]" value="<%= @dojo.street %>"></p>
+	<p><label for="branch">City: </label>
+	<input type="text" name="form[city]" value="<%= @dojo.city %>"></p>
+	<p><label for="branch">State: </label>
+	<input type="text" name="form[state]" value="<%= @dojo.state %>"></p>
+	<input type="submit" name="submit" value="Create">
+</form>
+
+<p><a href="<%= dojos_path %>">Go Back</a></p>
