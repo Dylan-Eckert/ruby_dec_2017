@@ -33,6 +33,10 @@ Self-join - https://youtu.be/ScTp79u6nMU <br>
 Routes/Controllers Lecture - https://youtu.be/phoKZVMg4-4 <br>
 Controllers - https://youtu.be/k4ttpRgRGV8 <br>
 Forms / Named Routes - https://youtu.be/B3mOcqreZnk <br>
+Layouts / Nested Resources - https://youtu.be/CCRa8GhtJ54 <br>
+
+## Demos
+Ninja Gold - https://youtu.be/KvHGoN-kw-s <br>
 
 ## Resources
 
