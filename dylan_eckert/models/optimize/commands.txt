@@ -1,0 +1,36 @@
+1) Retrieve all players, then write a program that will loop through each player and display their team name, mascot and stadium. How many queries have we done?
+
+allplayers = Player.all
+
+allplayers.each do |player|
+  puts player.team.name
+  puts player.team.mascot
+  puts player.team.stadium
+end
+
+TOTAL QUERIES = 499 (1 to get all players and 498 to get all players info so 498+1)
+
+2) Retrieve all players and write a program to loop through each player and their team name, mascot and stadium using .includes. How many queries have we done now?
+
+allplayers2 = Player.includes(:team).all
+
+allplayers2.each do |player|
+  puts player.team.name
+  puts player.team.mascot
+  puts player.team.stadium
+end
+
+TOTAL QUERIES = 2 (1 to get all players and 1 to get all players info so 1+1)
+
+3) Retrieve all players from the 'Chicago Bulls' by using .includes
+
+allplayers3 = Player.includes(:team).where("team.name = 'Chicago Bulls'").references(:team)
+
+4) Retrieve all players along with the team name that play at the 'Staples Center'
+
+allplayers4 = Player.joins(:team).select('players.*', 'teams.name as franchise', 'teams.stadium as stadium').where("teams.stadium = 'Staples Center'")
+
+5) Retrieve all teams that have any player that start their name with the letter 'Z' by using .includes and .joins
+
+allteam = Team.includes(:players).where("players.name LIKE 'Z%'").references(:players)
+allteam2 = Team.joins(:players).where("players.name LIKE 'Z%'")

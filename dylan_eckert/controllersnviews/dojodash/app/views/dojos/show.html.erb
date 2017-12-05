@@ -1,0 +1,13 @@
+<h1>Dojo <%= @dojo.id %></h1>
+<p>Branch:</p>
+<p><%= @dojo.branch %></p>
+<p>Street:</p>
+<p><%= @dojo.street %></p>
+<p>City:</p>
+<p><%= @dojo.city %></p>
+<p>State:</p>
+<p><%= @dojo.state %></p>
+
+<a href="<%= students_path @dojo.id %>">View Students</a>
+
+<a href="<%= dojos_path %>">Go Back</a>

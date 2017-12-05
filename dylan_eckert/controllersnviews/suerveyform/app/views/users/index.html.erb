@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <% if flash[:errors] %>
+      <div id="errors">
+        <% flash[:errors].each do |error| %>
+        <p><%= error %></p>
+        <% end %>
+      </div>
+    <% end %>
+    <form action="/result" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <span>Your Name:</span>
+      <input type="text" name="user[name]">
+      <span>Dojo Location:</span>
+      <select name="user[location]">
+        <option value="Mtn View, CA">Mountain View</option>
+        <option value="Seattle, WA">Seattle</option>
+        <option value="Dallas, TX">Dallas</option>
+      </select>
+      <span>Favorite Language:</span>
+      <select name="user[language]">
+        <option value="JavaScript">JavaScript</option>
+        <option value="Ruby">Ruby</option>
+        <option value="Python">Python</option>
+      </select>
+      <span>Comment (Optional):</span>
+      <textarea name="user[comment]" rows="8" cols="80"></textarea>
+      <button type="submit" name="submit">Submit</button>
+    </form>
+  </body>
+</html>

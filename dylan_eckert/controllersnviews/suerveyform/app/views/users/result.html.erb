@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Results</title>
+  </head>
+  <body>
+    <%= flash[:success] %>
+    <h2>Submitted Information:</h2>
+    <p>Name: <%= @user["name"] %></p>
+    <p>Dojo Location: <%= @user["location"] %></p>
+    <p>Favorite Language: <%= @user["language"] %></p>
+    <p>Comment: <%= @user["comment"] %></p>
+    <a href="/">Go Back</a>
+  </body>
+</html>

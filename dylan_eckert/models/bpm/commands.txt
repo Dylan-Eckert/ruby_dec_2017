@@ -1,0 +1,45 @@
+rails g model Blog name:string description:text
+
+rails g model Post title:string content:text blog:references
+
+rails g model Message author:string message:text post:references
+
+class Blog < ActiveRecord::Base
+  has_many :posts
+
+  validates :name, :description, presence: true
+end
+
+class Post < ActiveRecord::Base
+  has_many :messages
+  belongs_to :blog
+
+  validates :content, presence: true
+  validates :title, length: { minimum: 7 }
+end
+
+class Message < ActiveRecord::Base
+  belongs_to :post
+
+  validates :author, :message, presence: true
+end
+
+# create one blog at a time
+Blog.create(name:"blog1",description:"blog 1 desc")
+# create all 5 blogs using a block with one line
+1.upto(5) { |i| Blog.create(name: "Blog #{i}", description: "This is the description for Blog #{i}") }
+
+# one post at a a time
+Post.create(title:"ptitle1", content:"content 1", blog:Blog.find(1))
+
+Message.create(author:"bob", message: "this is a message 1", post:Post.find(1))
+
+
+Blog.first.posts
+
+Blog.last.posts.order('title DESC')
+
+Post.first.update(title: "new title 1")
+
+Blog.all
+Blog.where("id < ?", 5)

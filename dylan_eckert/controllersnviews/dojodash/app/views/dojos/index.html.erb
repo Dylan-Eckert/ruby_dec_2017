@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <td>Branch</td>
+      <td>Street</td>
+      <td>City</td>
+      <td>State</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dojos.each do |dojo| %>
+    <tr>
+      <td><%= dojo.branch %></td>
+      <td><%= dojo.street %></td>
+      <td><%= dojo.city %></td>
+      <td><%= dojo.state %></td>
+      <td><a href="<%= dojo_path dojo.id %>">Show</a> | <a href="<%= edit_dojo_path dojo.id %>">Edit</a> | <a href="<%= destroy_dojo_path dojo.id %>" data-method="delete">Destroy</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="<%= new_dojo_path %>">New Dojo</a>

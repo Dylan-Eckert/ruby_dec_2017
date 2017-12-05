@@ -1,0 +1,35 @@
+rails new dojo_ninjas
+
+rails g model Dojo name:string city:string state:string
+
+rails g model Ninja fname:string lname:string dojo:references
+
+class Ninja < ApplicationRecord
+  belongs_to :dojo
+  validates :fname, :lname, presence: true
+end
+
+class Dojo < ApplicationRecord
+  has_many :ninjas, dependent: :destroy
+  validates :name, :city, :state , presence: true
+  validates :state, length:{is:2}
+end
+
+Dojo.create(name:"bro")
+   (0.1ms)  begin transaction
+   (0.1ms)  rollback transaction
+=> #<Dojo id: nil, name: "bro", city: nil, state: nil, created_at: nil, updated_at: nil>
+
+Dojo.create(name:"CD Silicon", city:"Mtn View", state:"CA")
+
+Dojo.destroy_all
+
+Ninja.create(fname:"cob", lname:"cobbers", dojo: Dojo.first)
+
+Ninja.create(fname:"bill", lname:"billers", dojo: Dojo.find(2))
+
+Ninja.create(fname:"bude", lname:"budely", dojo: Dojo.last)
+
+Dojo.first.ninjas.all
+
+Dojo.find(2).ninjas.select(:fname).order('created_at DESC')

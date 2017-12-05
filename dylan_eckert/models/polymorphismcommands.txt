@@ -1,0 +1,13 @@
+rails g model Comment content:text commentable:references{polymorphic}
+
+rake db:migrate
+
+has_many :comments, as: :commentable
+
+Comment.create(content: "this is comment for blog 1" commentable: Blog.first)
+
+Blog.first.comments
+
+Blog.first.comments.first.update(content:"update comment")
+
+Blog.first.comments.first.destroy

@@ -1,0 +1,53 @@
+5 users
+User.create(fname:"bob", lname:"bobbers", email:"email")
+
+5 blogs
+Blog.create(name:"blog1", desc:"blog desc 1")
+
+Creating the blog owners by linking user id and blog id to owners table
+Owner.create(blog:Blog.find(2), user:User.find(1))
+
+first user create 3 posts for 2nd blog
+Post.create(user:User.first, blog:Blog.find(2), title:"b1 p1 title", content:"b1 p1 content")
+
+2nd user create 5 posts for last blog
+Post.create(user:User.find(2), blog:Blog.last, title:"b5 p1 title", content:"b5 p1 content")
+
+3rd user several posts for different blogs
+Post.create(user:User.find(3), blog:Blog.find(3), title:"b3 p1 title", content:"b3 p1 content")
+Post.create(user:User.find(3), blog:Blog.find(2), title:"b2 p4 title", content:"b2 p4 content")
+Post.create(user:User.find(3), blog:Blog.find(4), title:"b4 p1 title", content:"b4 p1 content")
+
+3rd user 2 msg 1st post created and 3 msg 2nd post created
+Message.create(user:User.find(3), post:Post.first, author:"p1 m1 author", msg:"p1 m1 msg")
+Message.create(user:User.find(3), post:Post.find(2), author:"p2 m1 author", msg:"p2 m1 msg")
+
+4th user 3 msg last post created
+Message.create(user:User.find(4), post:Post.last, author:"plast m1 author", msg:"plast m1 msg")
+
+change owner of 2nd post to last user
+Post.find(2).update(user:User.last)
+
+change 2nd post content to something else
+Post.find(2).update(content:"new content")
+
+get all blogs owned by 3rd user
+User.find(3).blogs
+
+get all posts owned by 3rd user
+User.find(3).posts
+
+get all messages owned by 3rd user
+User.find(3).messages
+
+get all posts belonging to blog 5 and display their authors (user who wrote the post)
+Post.joins(:user, :blog).where("blogs.id = ?", 5).select("*")
+
+get all messages belonging to blog 5 and display their authors (user who wrote the message)
+Message.joins(:user).where(post: Blog.find(5).posts).select("*")
+
+get all user info who own blog 1
+Blog.first.users
+
+remove first user as an owner to blog 1
+Owner.where("id = ? AND user_id = ?", 1,1).update_all("user_id = null")
