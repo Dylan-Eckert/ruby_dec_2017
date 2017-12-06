@@ -1,0 +1,22 @@
+<h1>Edit <%= @student.fname %> for Dojo <%= @dojo.id %></h1>
+<% if flash[:errors] %>
+  <div id="errors">
+    <% flash[:errors].each do |error| %>
+    <p><%= error %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<form action="<%= update_student_path  @dojo.id, @student.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <span>First Name:</span>
+  <input type="text" name="student[fname]" value="<%= @student.fname %>">
+  <span>Last name:</span>
+  <input type="text" name="student[lname]" value="<%= @student.lname %>">
+  <span>Email:</span>
+  <input type="text" name="student[email]" value="<%= @student.email %>">
+  <button type="submit" name="submit">Submit</button>
+</form>
+
+<a href="<%= students_path @dojo.id %>">Go Back</a>

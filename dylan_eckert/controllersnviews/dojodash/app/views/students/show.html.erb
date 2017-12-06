@@ -1,0 +1,14 @@
+<h1>Student <%= @student.id %></h1>
+<p>This student belongs to Dojo <%= @dojo.id %></p>
+<p>First Name:</p>
+<p><%= @student.fname %></p>
+<p>Last Name:</p>
+<p><%= @student.lname %></p>
+<p>Email:</p>
+<p><%= @student.email %></p>
+
+<p>Cohort Members:</p>
+<% @cohortees.each do |member| %>
+<p><%= member.fname %> <%= member.lname %></p>
+<% end %>
+<a href="<%= students_path @dojo.id %>">Go Back</a>

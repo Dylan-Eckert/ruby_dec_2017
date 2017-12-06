@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   # STUDENT NESTED ROUTES FOR DOJO
   get "/dojos/:dojo_id/students" => "students#index", as: "students"
-  # post "/dojos/:dojo_id/students" => "students#create", as: "create_student"
+  post "/dojos/:dojo_id/students" => "students#create", as: "create_student"
   get "/dojos/:dojo_id/students/new" => "students#new", as: "new_student"
   get "/dojos/:dojo_id/students/:id" => "students#show", as: "student"
   get "/dojos/:dojo_id/students/:id/edit" => "students#edit", as: "edit_student"
-  # patch "/dojos/:dojo_id/students/:id" => "students#update", as: "update_student"
+  patch "/dojos/:dojo_id/students/:id" => "students#update", as: "update_student"
   delete "/dojos/:dojo_id/students/:id" => "students#destroy", as: "destroy_student"
 
 end

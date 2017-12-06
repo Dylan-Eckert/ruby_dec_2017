@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dojodash</title>
+    <title>Layouts</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,7 +9,16 @@
   </head>
 
   <body>
-    <%= yield %>
-
+    <div class="row">
+      <div class="col-md-4">
+        <%= yield :posts %>
+      </div>
+      <div class="col-md-4">
+        <%= yield :postform %>
+      </div>
+      <div class="col-md-4">
+        <%= yield :postnav %>
+      </div>
+    </div>
   </body>
 </html>
