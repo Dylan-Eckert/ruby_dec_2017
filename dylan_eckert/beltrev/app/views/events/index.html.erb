@@ -1,0 +1,124 @@
+<h1>Welcome, <%= current_user.fname %>!</h1>
+<h3>Events Near You:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Host</th>
+      <th>Action/Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for event in @nearme %>
+    <tr>
+      <td><a href="<%= event_path event.id %>"><%= event.name %></a></td>
+      <td><%= event.date %></td>
+      <td><%= event.location %></td>
+      <td><%= event.user.fname.capitalize %></td>
+      <% if current_user == event.user %>
+      <td>
+        <a href="<%= edit_event_path event.id %>">Edit</a>
+        |
+        <a href="<%= destroy_event_path event.id %>" data-method="delete">Delete</a>
+      </td>
+      <% else %>
+        <% unless event.people_attending.include?(current_user)  %>
+        <td>
+          <form action="<%= attend_path %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="attendee[event_id]" value="<%= event.id %>">
+            <input type="submit" name="Attend" value="Attend">
+          </form>
+        </td>
+        <% else %>
+        <td>
+          <span>Attending</span>
+          <form action="<%= cancel_path event.id %>" method="post">
+            <!-- Attendee.where is basically saying find the attendee that matches the current user's id and the event id that you are cancelling -->
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" name="Cancel" value="Cancel">
+          </form>
+        </td>
+        <% end %>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3>Events in Other States:</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>state</th>
+      <th>Host</th>
+      <th>Action/Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for event in @oostate %>
+    <tr>
+      <td><a href="<%= event_path event.id %>"><%= event.name %></a></td>
+      <td><%= event.date %></td>
+      <td><%= event.location %></td>
+      <td><%= event.state %></td>
+      <td><%= event.user.fname.capitalize %></td>
+      <% if current_user == event.user %>
+      <td>
+        <a href="<%= edit_event_path event.id %>">Edit</a>
+        |
+        <a href="<%= destroy_event_path event.id %>" data-method="delete">Delete</a>
+      </td>
+      <% else %>
+        <% unless event.people_attending.include?(current_user)  %>
+        <td>
+          <form action="<%= attend_path %>" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="attendee[event_id]" value="<%= event.id %>">
+            <input type="submit" name="Attend" value="Attend">
+          </form>
+        </td>
+        <% else %>
+        <td>
+          <span>Attending</span>
+          <form action="<%= cancel_path event.id %>" method="post">
+            <!-- Attendee.where is basically saying find the attendee that matches the current user's id and the event id that you are cancelling -->
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" name="Cancel" value="Cancel">
+          </form>
+        </td>
+        <% end %>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Create Event</h1>
+<form action="<%= create_event_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <p>Name</p>
+  <input type="text" name="event[name]">
+  <p>Date</p>
+  <input type="date" name="event[date]">
+  <p>Location</p>
+  <input type="text" id="location" name="event[location]">
+  <p>State</p>
+  <select name="event[state]">
+    <option value="AZ">Arizona</option>
+    <option value="NV">Nevada</option>
+    <option value="WA">Washington</option>
+    <option value="NY">New York</option>
+    <option value="TX">Texas</option>
+    <option value="CA">California</option>
+    <option value="MI">Michigan</option>
+  </select>
+  <button type="submit" name="addevent">Create Event</button>
+</form>

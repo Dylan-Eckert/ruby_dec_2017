@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Beltrev</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <% if current_user %>
+      <a href="<%= logout_path current_user.id %>" data-method="delete">Logout</a>
+      |
+      <a href="<%= events_path %>">Events Dashboard</a>
+      |
+      <a href="<%= edit_user_path current_user.id %>">Edit My Profile</a>
+      <% end %>
+
+    </nav>
+    <div class="errors">
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+        <p><%= error %></p>
+        <% end %>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
+</html>

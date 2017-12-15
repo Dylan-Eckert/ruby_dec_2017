@@ -1,0 +1,30 @@
+<h1><%= @event.name %> Page</h1>
+
+<p>Host:</p>
+<p><%= @event.user.fname %> <%= @event.user.lname %></p>
+<p>Date:</p>
+<p><%= @event.date %></p>
+<p>Location:</p>
+<p><%= @event.location %></p>
+<p>Number of Attendees:</p>
+<p><%= @event.people_attending.count %></p>
+
+<h3>Attendees</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>State</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event.people_attending.each do |p| %>
+      <tr>
+        <td><%= p.fname.capitalize %> <%= p.lname.capitalize %></td>
+        <td><%= p.location %></td>
+        <td><%= p.state %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
